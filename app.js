@@ -1,7 +1,7 @@
 
 const $=id=>document.getElementById(id), fuels={1:'diesel',2:'sp95',3:'e85',4:'gpl',5:'e10',6:'sp98'};
 const money=n=>n.toLocaleString('fr-FR',{style:'currency',currency:'EUR'}), euroL=n=>n.toFixed(3).replace('.',',')+' €/L';
-const load=(k,fallback)=>{try{return JSON.parse(localStorage.getItem(k))??fallback}catch{return fallback}},store=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
+const load=(k,fallback)=>{try{return JSON.parse(localStorage.getItem(k))??fallback}catch{return fallback}},store=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));window.dispatchEvent(new Event('fp-data-change'))}catch{}};
 let stations=[],byId=new Map(),start=null,end=null,selected=null,baseRoutes=[],baseRoute=null,activeRoute=null,routeVersion=0,shown=30,mapResults=[],map,stationLayer,routeLayer,placeLayer,heatLayer=null,chart=null,rankResults=[],detourCache=new Map(),geocodeVersion={start:0,end:0};
 let favorites=load('fr-favorites',[]),alerts=load('fr-alerts',[]),history=load('fr-history',[]),vehicles=load('fp-vehicles',[]),fills=load('fp-fills',[]),compareIds=[];const position=s=>s&&Number.isFinite(s.lat)&&Number.isFinite(s.lon)?{lat:s.lat,lon:s.lon}:null;
 function shortAddress(r){const a=r.address||{},road=[a.house_number,a.road||a.pedestrian||a.footway].filter(Boolean).join(' '),city=a.city||a.town||a.village||a.municipality||'',name=road||r.name||a.hamlet||city||a.country||'Lieu';return name+(city&&city.toLowerCase()!==name.toLowerCase()?', '+city:'')+(a.postcode?' ('+a.postcode+')':'')}

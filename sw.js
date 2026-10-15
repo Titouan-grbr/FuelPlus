@@ -1,5 +1,5 @@
-const CACHE='fuelplus-shell-v16-services-navigation';
-const ASSETS=['./index.html','./manifest.webmanifest','./icon.svg','./app.js'];
+const CACHE='fuelplus-shell-v17-auth';
+const ASSETS=['./index.html','./manifest.webmanifest','./icon.svg','./app.js','./auth.js','./conditions.html','./confidentialite.html'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil((async()=>{for(const k of await caches.keys())if(k.startsWith('fuelplus-shell-')&&k!==CACHE)await caches.delete(k);await self.clients.claim()})())});
 self.addEventListener('fetch',e=>{const r=e.request,u=new URL(r.url);if(r.method!=='GET'||u.origin!==self.location.origin)return;
