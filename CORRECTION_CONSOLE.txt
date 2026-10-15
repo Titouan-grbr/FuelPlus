@@ -1,1 +1,0 @@
-Correction du blocage CSS Leaflet : suppression de l’attribut integrity erroné sur leaflet.css. La CSP autorise aussi les connexions CDN utilisées par les source maps. Cache de l’application actualisé.
