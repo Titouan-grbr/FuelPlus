@@ -1,1 +1,9 @@
-const CACHE='fuelplus-shell-v2';self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./index.html','./manifest.webmanifest','./icon.svg'])));self.skipWaiting()});self.addEventListener('activate',e=>{e.waitUntil(self.clients.claim())});self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==location.origin)return;if(new URL(e.request.url).pathname.includes('PrixCarburants_'))return;e.respondWith(fetch(e.request).then(r=>{if(r.ok){const clone=r.clone();caches.open(CACHE).then(c=>c.put(e.request,clone))}return r}).catch(()=>caches.match(e.request)))})
+const CACHE='fuelplus-shell-v7-secure';
+const ASSETS=['./index.html','./manifest.webmanifest','./icon.svg'];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting()});
+self.addEventListener('activate',e=>{e.waitUntil((async()=>{for(const k of await caches.keys())if(k.startsWith('fuelplus-shell-')&&k!==CACHE)await caches.delete(k);await self.clients.claim()})())});
+self.addEventListener('fetch',e=>{const r=e.request,u=new URL(r.url);if(r.method!=='GET'||u.origin!==self.location.origin)return;
+if(u.pathname.includes('PrixCarburants_'))return;
+if(r.mode==='navigate'){e.respondWith(fetch(r).catch(()=>caches.match('./index.html')));return}
+e.respondWith(fetch(r).then(resp=>{if(resp.ok&&ASSETS.some(a=>u.pathname.endsWith(a.slice(2)))){const clone=resp.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(r,clone)))}return resp}).catch(()=>caches.match(r)))
+});
