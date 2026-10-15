@@ -1,1 +1,0 @@
-Correction du CSS Leaflet : accolade manquante dans la règle des tuiles, rétablissement du positionnement, mise à jour du hash CSP et du cache. Tester dans une fenêtre privée.
