@@ -1,5 +1,0 @@
-CORRECTION DU SITE FIGE
-
-Remplacer index.html, _headers et sw.js, et AJOUTER app.js a la racine du depot GitHub.
-Ne pas supprimer le dossier instantane.
-Cette version place le code JavaScript dans app.js afin de respecter la politique de securite CSP sans unsafe-inline.
