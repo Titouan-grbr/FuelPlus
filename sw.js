@@ -1,4 +1,4 @@
-const CACHE='fuelplus-shell-v7-secure';
+const CACHE='fuelplus-shell-v8-mapfix';
 const ASSETS=['./index.html','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil((async()=>{for(const k of await caches.keys())if(k.startsWith('fuelplus-shell-')&&k!==CACHE)await caches.delete(k);await self.clients.claim()})())});
