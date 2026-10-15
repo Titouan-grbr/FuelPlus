@@ -1,0 +1,15 @@
+CORRECTION DU MENU ITINÉRAIRE
+
+Le menu Itinéraire existait dans le code mais était placé en 6e position sur mobile,
+alors que la barre inférieure était prévue pour 5 colonnes.
+
+Correction :
+- onglet Itinéraire visible en 3e position sur mobile (6 colonnes)
+- onglet Itinéraire en 2e position dans le menu ordinateur
+- aucune modification du calcul d'itinéraires
+- automatisation des prix incluse dans le ZIP
+
+Sur GitHub, remplace seulement index.html pour cette correction si tu as déjà
+installé la version avec les prix automatiques.
+Si ce n'est pas le cas, ajoute aussi .github/workflows/maj-prix.yml et
+scripts/maj_carburants.py en suivant INSTALLATION_MAJ_AUTO.txt.

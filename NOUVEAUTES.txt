@@ -1,0 +1,1 @@
+Nouveautés : itinéraire dans un onglet dédié, partage et favoris depuis la carte, contour dégradé pour favoris, choix des thèmes dans Profil > Apparence, sortie plein écran. Les préférences restent dans le navigateur.

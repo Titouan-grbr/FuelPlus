@@ -1,0 +1,18 @@
+FUEL+ — COMPTES (VERSION DE TEST)
+
+1. Copier TOUS les fichiers de cette archive dans le dépôt GitHub FuelPlus (en conservant les dossiers).
+2. Attendre le déploiement Cloudflare Pages.
+3. Dans Supabase > Authentication > URL Configuration : Site URL https://fuelplus.pages.dev et Redirect URL https://fuelplus.pages.dev/**
+4. Dans Google Cloud, l'URI autorisée doit être l'URL CALLBACK SUPABASE, pas fuelplus.pages.dev.
+5. Tester Google, inscription e-mail avec confirmation, connexion, mot de passe oublié et mode invité.
+6. Tester la synchronisation sur deux appareils : créer un véhicule sur PC, se connecter sur mobile, vérifier sa présence.
+
+ATTENTION :
+- Utilise la clé PUBLIQUE Supabase (incluse dans auth.js), jamais une clé secrète.
+- Les règles RLS des tables doivent être actives. Le système utilise pour le moment la colonne profiles.preferences.snapshot pour synchroniser les données en bloc.
+- Les tables vehicles, fuel_fills, favorites existent mais ne sont pas utilisées directement dans cette version. Pas de fusion automatique de deux appareils modifiés simultanément ; la dernière sauvegarde peut l'emporter.
+- Le mode invité fonctionne localement. Au premier login, une confirmation demande quelle copie conserver en cas de conflit.
+- Les pages conditions.html et confidentialite.html sont des TEXTES PROVISOIRES à compléter avant mise en ligne publique.
+- La suppression définitive du compte et des données serveur n'est PAS encore implémentée. Prévoir ce parcours avant le lancement public.
+- L'envoi d'e-mails par défaut Supabase peut être limité : configurer un SMTP adapté avant lancement public.
+- La connexion SMS n'est pas activée.
