@@ -1,2 +1,0 @@
-Correction Leaflet : recalcul automatique de la taille de la carte lors du changement d’onglet, redimensionnement, rotation du téléphone, retour sur la page et plein écran. Hash CSP actualisé.
-Pour mettre à jour GitHub : remplacer les fichiers à la racine, y compris _headers et sw.js.
